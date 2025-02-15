@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Directory</title>
+    <style>
+        body { font-family: 'Courier New', monospace; background-color: #f0f0f0; text-align: center; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; background: white; }
+        th, td { border: 2px solid #100000; padding: 10px; text-align: center; }
+        th { background-color: #6d5656; color: white; }
+        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        .close-btn { cursor: pointer; color: red; font-size: 20px; }
+        img { max-width: 120px; height: auto; border: 2px solid #333; }
+    </style>
+</head>
+<body>
+    <h1>Student Table</h1>
+    <button onclick="addNewRow()">Add New Student</button>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Contact</th>
+                <th>Profile</th>
+                <th>Image Upload</th>
+                <th>Photo</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="uploadModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3>Upload Photo</h3>
+        <input type="file" id="imageInput" accept="image/jpeg"><br><br>
+        <button onclick="submitImage()">Upload</button>
+    </div>
+
+    <script>
+        const students = [
+            { name: "Teja", city: "Hyderabad", contact: "9121545545", profile: "#" },
+            { name: "Sai", city: "Hyderabad", contact: "8005625452", profile: "#" }
+        ];
+
+        let selectedRow;
+
+        function populateTable() {
+            const tableBody = document.querySelector("#studentTable tbody");
+            tableBody.innerHTML = "";
+            students.forEach((student, index) => {
+                addRowToTable(student, index + 1);
+            });
+        }
+
+        function addRowToTable(student, index) {
+            const tableBody = document.querySelector("#studentTable tbody");
+            const row = tableBody.insertRow();
+            row.innerHTML = `
+                <td>${index}</td>
+                <td>${student.name}</td>
+                <td>${student.city}</td>
+                <td>${student.contact}</td>
+                <td><a href="${student.profile}" target="_blank">View</a></td>
+                <td><button onclick="openModal(this)">Upload</button></td>
+                <td class="uploaded-photo"></td>
+            `;
+        }
+
+        function addNewRow() {
+            const name = prompt("Enter Name:");
+            const city = prompt("Enter City:");
+            const contact = prompt("Enter Contact:");
+            const profile = prompt("Enter Profile URL:");
+            if (name && city && contact && profile) {
+                const newStudent = { name, city, contact, profile };
+                students.push(newStudent);
+                addRowToTable(newStudent, students.length);
+            } else {
+                alert("All fields are required!");
+            }
+        }
+
+        function openModal(button) {
+            selectedRow = button.parentElement.parentElement;
+            document.getElementById("uploadModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("uploadModal").style.display = "none";
+            document.getElementById("imageInput").value = "";
+        }
+
+        function submitImage() {
+            const fileInput = document.getElementById("imageInput");
+            const file = fileInput.files[0];
+            if (file && file.type === "image/jpeg") {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    selectedRow.querySelector(".uploaded-photo").innerHTML = `<img src="${e.target.result}" alt="Photo">`;
+                };
+                reader.readAsDataURL(file);
+                closeModal();
+            } else {
+                alert("Only JPEG files allowed.");
+            }
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("uploadModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        populateTable();
+    </script>
+</body>
+</html>
