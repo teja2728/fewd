@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet Haven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Playfair Display', serif; background-color: #faf3e0; text-align: center; margin: 0; padding: 0; }
+        h1 { text-transform: uppercase; text-shadow: 3px 3px 6px gray; color: #8b0000; font-size: 36px; }
+        .nav-menu { background-color: #3e2723; padding: 15px; }
+        .nav-menu a { color: #f4e1c1; margin: 0 15px; text-decoration: none; font-size: 18px; font-weight: bold; }
+        .nav-menu a:hover { color: #ffd700; }
+        .menu-card { width: 80%; margin: 20px auto; padding: 25px; background: #fff8dc; border-radius: 15px; box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 2px solid #3e2723; padding: 12px; text-align: left; }
+        th { background-color: #8b0000; color: white; font-size: 18px; }
+        tr:hover { background-color: #f5cba7; }
+        .specialties { list-style-type: lower-alpha; text-align: left; margin: 20px auto; width: 50%; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1 id="restaurant-name">KMIT CANTEEN</h1>
+    <div class="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact Us</a>
+    </div>
+
+    <section id="menu" class="menu-card">
+        <h2>Exquisite Dishes</h2>
+        <table>
+            <tr>
+                <th>Dish Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Manchurian</td>
+                <td>50Rs</td>
+                <td>Hot and Spicy Semi Dry Manchurian </td>
+            </tr>
+            <tr>
+                <td>Veg Biryani</td>
+                <td>70</td>
+                <td>KMIT Canteen's Special Biryani with salads</td>
+            </tr>
+            <tr>
+                <td>Regular Meals</td>
+                <td>50</td>
+                <td>Plain Rice with Dal, Curry and with Tomato Pickle</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="menu-card">
+        <h2>Our Specialties</h2>
+        <ol class="specialties">
+            <li>Chai</li>
+            <li>Spring Rolls</li>
+            <li>Noodles</li>
+            <li>Samosa</li>
+            <li>Pav Bhaji</li>
+        </ol>
+    </section>
+</body>
+</html>
