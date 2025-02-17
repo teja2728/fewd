@@ -1,0 +1,62 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e3f2fd;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    width: 50%;
+    background: white;
+    padding: 40px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+h2 {
+    text-align: center;
+    color: #007BFF;
+}
+label {
+    font-weight: bold;
+    color: #333;
+}
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 2px solid #83b2e4;
+    border-radius: 5px;
+}
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 5px;
+}
+.rating input {
+    display: none;
+}
+.rating label {
+    font-size: 25px;
+    color: #ccc;
+    cursor: pointer;
+}
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffcc00;
+}
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+.btn:hover {
+    background-color: #0056b3;
+}
