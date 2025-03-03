@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #ff9a9e, #fad0c4); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .card { border-radius: 15px; background: rgba(255, 255, 255, 0.8); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .btn-primary { background-color: #ff758c; border: none; }
+        .btn-primary:hover { background-color: #ff5252; }
+        .rating { display: flex; justify-content: center; gap: 10px; flex-direction: row-reverse; }
+        .rating input { display: none; }
+        .rating label { font-size: 2rem; cursor: pointer; transition: transform 0.2s, text-shadow 0.2s; }
+        .rating label:hover, .rating input:checked ~ label { color: gold; transform: scale(1.2); text-shadow: 0 0 5px rgba(255, 215, 0, 0.8); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card p-4 text-center">
+            <h2 class="mb-4 text-dark fw-bold"> Your Feedback Matters! </h2>
+            <form id="feedbackForm">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Phone Number" pattern="[0-9]{10}" required>
+                    <small class="text-muted">Enter a 10-digit phone number.</small>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Rate Your Experience:</label>
+                    <div class="rating">
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1">⭐</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2">⭐</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3">⭐</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4">⭐</label>
+                        <input type="radio" id="star5" name="rating" value="5"><label for="star5">⭐</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" id="questions" name="questions" rows="3" placeholder="Have any questions?" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" id="comments" name="comments" rows="3" placeholder="Additional comments"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100"> Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            if (this.checkValidity()) {
+                alert("Thank you for your feedback!");
+                this.reset();
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
